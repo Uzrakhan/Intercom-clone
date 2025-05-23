@@ -21,27 +21,40 @@ function App() {
   } = useChat()
 
   const [showUserList, setShowUserList] = useState(true);
-  const [showAIAssistant, setShowAIAssistant] = useState(false);
-  const [activePanel, setActivePanel] = useState('chats');
+  const [showAI, setShowAI] = useState(false);
+  const [showChat, setShowChat] = useState(false)
+
   return (
     <div className='flex flex-col md:flex-row  h-screen bg-gray-100'>
       {/*Mobile navigation */}
       <div className='md:hidden flex justify-between p-2 bg-white border-b'>
         <button
-        onClick={() => setActivePanel('chats')}
-        className={`p-2 ${activePanel === 'chats' ? 'text-blue-500' : 'text-gray-600'}`}
+        onClick={() => {
+          setShowUserList(true)
+          setShowAI(false)
+          setShowChat(false)
+        }}
+        className='p-2 text-blue-500'
         >
           Chats
         </button>
         <button 
-        onClick={() => setActivePanel('messages')}
-        className={`p-2 ${activePanel === 'messages' ? 'text-blue-500' : 'text-gray-600'}`}
+        onClick={() => {
+          setShowUserList(false)
+          setShowChat(true)
+          setShowAI(false)
+        }}
+        className='p-2 text-blue-500'
         >
           Messages
         </button>
         <button
-        onClick={() => setActivePanel('ai')}
-        className={`p-2 ${activePanel === 'ai' ? 'text-blue-500' : 'text-gray-600'}`}
+        onClick={() => {
+            setShowUserList(false);
+            setShowChat(false);
+            setShowAI(true);
+        }}
+        className='p-2 text-gray-600'
         >
           AI
         </button>
@@ -50,34 +63,38 @@ function App() {
       {/* User list - hidden on mobile when not active  */}
 
       <div className={`w-full md:w-1/4 border-r bg-white 
-        ${activePanel === 'chats' ? 'block' : 'hidden'} md:block`}>
+        ${showUserList ? 'block' : 'hidden'} md:block`}>
         <UserList 
          users={users}
          selectedUser={selectedUser}
          onSelectUser={(user) => {
-          setSelectedUser(user);
-          setActivePanel('messages')
-         }}
+            setSelectedUser(user);
+            setShowUserList(false);
+            setShowChat(true);
+          }}
         />
       </div>
 
 
       {/*Chat window always visible on medium+ screens */}
-      <div className={`flex-1 flex flex-col${activePanel === 'messages' ? 'flex' : 'hidden'} md:flex`}>
+      <div className={`flex-1 flex flex-col ${showChat ? 'block' : 'hidden'} md:flex`}>
         <ChatWindow 
          selectedUser={selectedUser}
          messages={messages}
          newMessage={newMessage}
          setNewMessage={setNewMessage}
          handleSend={handleSendMessage}
-         onBack={() => setActivePanel('chats')}
+         onBack={() => {
+            setShowChat(false);
+            setShowUserList(true);
+          }}
         />
       </div>
 
 
       {/*AI assistant - hidden on mobile when not active */}
       <div className={`w-full md:w-1/4 border-l bg-white 
-        ${activePanel === 'ai' ? 'block' : 'hidden'} md:block`}>
+        ${showAI ? 'block' : 'hidden'} md:block`}>
         <AIAssistant 
          aiMessages={aiMessages}
          aiInput={aiInput}
