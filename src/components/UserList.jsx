@@ -3,7 +3,6 @@ import React from 'react';
 const UserList = ({ users, onSelectUser, setSelectedUser }) => {
   return (
     <div className='p-2 md:p-4'>
-        <h2 className='text-xl md:text-xl font-bold mb-4 md:mb-6 text-gray-700'>Chats</h2>
         <div className='space-y-1 md:space-y-2'>
             {users.map((user) => (
                 <div 

@@ -25,7 +25,7 @@ function App() {
   const [showChat, setShowChat] = useState(false)
 
   return (
-    <div className='flex flex-col md:flex-row  h-screen bg-gray-100'>
+    <div className='flex flex-col md:flex-row  h-screen bg-gray-100 overflow-hidden'>
       {/*Mobile navigation */}
       <div className='md:hidden flex justify-between p-2 bg-white border-b'>
         <button
@@ -61,34 +61,40 @@ function App() {
       </div>
 
       {/* User list - hidden on mobile when not active  */}
-
-      <div className={`w-full md:w-1/4 border-r bg-white 
-        ${showUserList ? 'block' : 'hidden'} md:block`}>
-        <UserList 
-         users={users}
-         selectedUser={selectedUser}
-         onSelectUser={(user) => {
-            setSelectedUser(user);
-            setShowUserList(false);
-            setShowChat(true);
-          }}
-        />
+      <div className={`md:flex flex-col flex-[0_0_300px] border-r bg-white shadow-lg ${showUserList ? 'block' : 'hidden'} md:block`}>
+        <div className="p-4 h-full flex flex-col">
+          <h2 className="text-xl font-semibold text-gray-800 mb-6">Conversations</h2>
+          <div className="flex-1 overflow-y-auto pr-2 -mr-2">
+            <UserList 
+              users={users} 
+              selectedUser={selectedUser} 
+              onSelectUser={(user) => {
+                setSelectedUser(user);
+                setShowUserList(false);
+                setShowChat(true);
+              }}
+            />
+          </div>
+        </div>
       </div>
 
 
+
       {/*Chat window always visible on medium+ screens */}
-      <div className={`flex-1 flex flex-col ${showChat ? 'block' : 'hidden'} md:flex`}>
-        <ChatWindow 
-         selectedUser={selectedUser}
-         messages={messages}
-         newMessage={newMessage}
-         setNewMessage={setNewMessage}
-         handleSend={handleSendMessage}
-         onBack={() => {
-            setShowChat(false);
-            setShowUserList(true);
-          }}
-        />
+      <div className={`flex-1 flex flex-col bg-white md:shadow-inner ${showChat ? 'block' : 'hidden'} md:flex`}>
+        <div className="flex-1 flex flex-col h-full">
+          <ChatWindow 
+            selectedUser={selectedUser} 
+            messages={messages} 
+            newMessage={newMessage}
+            setNewMessage={setNewMessage}
+            handleSend={handleSendMessage}
+            onBack={() => {
+              setShowChat(false);
+              setShowUserList(true);
+            }}
+          />
+        </div>
       </div>
 
 
