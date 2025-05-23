@@ -9,7 +9,7 @@ const UserList = ({ users, onSelectUser, setSelectedUser }) => {
                  key={user.id}
                  onClick={() => onSelectUser(user)}
                  className={`flex items-center p-2 md:p-3 rounded-lg cursor-pointer transition-colors
-                    ${setSelectedUser && setSelectedUser.id === user.id ? 'bg-blue-50 border-blue-200': 'hover:bg-gray-50'}
+                    ${setSelectedUser?.id === user.id ? 'bg-blue-50 border-blue-200': 'hover:bg-gray-50 w-full'}
                     `}
                 >
                     <img 

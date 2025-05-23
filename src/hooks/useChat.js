@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { users as initialUsers, initialMessages, initialAIMessages } from '../data/dummyData';
+import { users as initialUsers, initialAIMessages } from '../data/dummyData';
 
 const useChat = () => {
-    const [users] = useState(initialUsers);
-    const [messages,setMessages] = useState(initialMessages);
+    const [users, setUsers] = useState(initialUsers);
     const [aiMessages,setAiMessages] = useState(initialAIMessages);
     const [selectedUser,setSelectedUser] = useState(initialUsers[0]);
     const [newMessage,setNewMessage] = useState('');
     const [aiInput, setAiInput] = useState('');
 
     const handleSendMessage = () => {
-        if (newMessage.trim()) {
+        if (newMessage.trim() && selectedUser) {
             const newMsg = {
-                id: messages.length + 1,
+                id: selectedUser.messages.length + 1,
                 text: newMessage,
                 sender: 'me',
                 timestamp: new Date().toLocaleTimeString([], {
@@ -20,7 +19,13 @@ const useChat = () => {
                     minute: '2-digit'
                 })
             };
-            setMessages([...messages, newMsg]);
+
+            const updatedUsers = users.map(user => 
+                user.id === selectedUser.id 
+                ? {...user, messages: [...user.messages, newMsg]}
+                : user
+            )
+            setMessages(updatedUsers);
             setNewMessage('');
         }
     };
@@ -46,7 +51,6 @@ const useChat = () => {
 
     return {
         users,
-        messages,
         aiMessages,
         selectedUser,
         newMessage,

@@ -1,6 +1,7 @@
 import React from 'react'
 
-const ChatWindow = ({ selectedUser, messages, newMessage, setNewMessage, handleSend,onBack }) => {
+const ChatWindow = ({ selectedUser, newMessage, setNewMessage, handleSend,onBack }) => {
+    const messages = selectedUser?.messages || [];
   return (
     <div className='flex flex-col h-full'>
 
@@ -55,11 +56,11 @@ const ChatWindow = ({ selectedUser, messages, newMessage, setNewMessage, handleS
                  onChange={(e) => setNewMessage(e.target.value)}
                  onKeyUp={(e) => e.key === 'Enter' && handleSend()}
                  placeholder='Type a message...'
-                 className='flex-1 p-2 text-sm md:text-base border rounded-lg focus:outline-1 focus:border-black'
+                 className='flex-1 p-2 text-sm md:text-base mb-5 border rounded-lg focus:outline-1 focus:border-black'
                 />
                 <button
                 onClick={handleSend}
-                className='ml-2 px-3 py-1.5 md:px-2 md:py-1 text-sm md:text-base bg-white border-2 border-slate-900 text-black rounded-lg hover:bg-black hover:text-white transition-colors'
+                className='ml-2 mb-5 px-3 py-1.5 md:px-2 md:py-1 text-sm md:text-base bg-white border-2 border-slate-900 text-black rounded-lg hover:bg-black hover:text-white transition-colors'
                 >
                     Send
                 </button>
