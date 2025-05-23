@@ -15,7 +15,7 @@ const UserList = ({ users, onSelectUser, setSelectedUser }) => {
                     <img 
                     src={user.avatar}
                     alt={user.name}
-                    className='w-8 h-8 md:w-12 md:h-12 rounded-full object-cover'
+                    className='w-8 h-8 md:w-9 md:h-9 rounded-full object-cover'
                     />
                     <div className='ml-2 md:ml-3 flex-1'>
                         <div className='flex justify-between items-center'>
@@ -23,12 +23,13 @@ const UserList = ({ users, onSelectUser, setSelectedUser }) => {
                                 {user.name}
                             </h3>
                             {user.unread > 0 && (
-                                <span className='bg-blue-500 text-white rounded-full px-1.5 py-0.5 md:px-2 md:py-1 text-xs'>
+                                <span className='bg-black text-white rounded-full 
+                                    text-xs flex items-center justify-center w-5 h-5 font-medium'>
                                     {user.unread}
                                 </span>
                             )}
                         </div>
-                        <p className='text-xs md:text-sm text-gray-600 truncate'>
+                        <p className='text-xs md:text-sm text-gray-600 truncate mt-0.5'>
                             {user.lastMessage}
                         </p>
                     </div>

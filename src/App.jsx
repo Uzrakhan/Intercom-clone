@@ -61,10 +61,10 @@ function App() {
       </div>
 
       {/* User list - hidden on mobile when not active  */}
-      <div className={`md:flex flex-col flex-[0_0_300px] border-r bg-white shadow-lg ${showUserList ? 'block' : 'hidden'} md:block`}>
-        <div className="p-4 h-full flex flex-col">
-          <h2 className="text-xl font-semibold text-gray-800 mb-6">Conversations</h2>
-          <div className="flex-1 overflow-y-auto pr-2 -mr-2">
+      <div className={`md:flex flex-col  md:w-1/5 border-r bg-white shadow-lg ${showUserList ? 'block' : 'hidden'} md:block`}>
+        <div className="p-4 md:p-4 h-full flex flex-col">
+          <h2 className="text-xl font-bold text-gray-800 mb-6">Your Inbox</h2>
+          <div className="flex-1 md:px-4  flex justify-center items-start mr-5">
             <UserList 
               users={users} 
               selectedUser={selectedUser} 
@@ -82,7 +82,7 @@ function App() {
 
       {/*Chat window always visible on medium+ screens */}
       <div className={`flex-1 flex flex-col bg-white md:shadow-inner ${showChat ? 'block' : 'hidden'} md:flex`}>
-        <div className="flex-1 flex flex-col h-full">
+        <div className="flex-1 flex flex-col h-full max-w-3xl mx-auto w-full">
           <ChatWindow 
             selectedUser={selectedUser} 
             messages={messages} 
@@ -99,7 +99,7 @@ function App() {
 
 
       {/*AI assistant - hidden on mobile when not active */}
-      <div className={`w-full md:w-1/4 border-l bg-white 
+      <div className={`w-full md:w-1/3 border-l bg-white 
         ${showAI ? 'block' : 'hidden'} md:block`}>
         <AIAssistant 
          aiMessages={aiMessages}
