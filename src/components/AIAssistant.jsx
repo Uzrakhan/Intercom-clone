@@ -35,7 +35,7 @@ const AIAssistant = ({  aiInput, setAiInput, handleSend }) => {
                     </button>
                 </div>
                 <p className='text-xs text-gray-500 mt-2 px-1'>
-                    AI may produce inaccurate information
+                    AI may produce inaccurate informations
                 </p>
             </div>
         </div>
