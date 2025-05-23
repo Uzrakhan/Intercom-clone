@@ -10,7 +10,7 @@ const AIAssistant = ({  aiInput, setAiInput, handleSend }) => {
 
 
         {/* AI messages*/}
-        <div className='flex justify-center items-center flex-col flex-1 md:flex md:justify-center md:items-center  overflow-y-auto p-4 pb-24 md:pb-4 md:p-4 bg-gray-50'>
+        <div className='flex justify-center items-center flex-col flex-1 md:flex md:justify-center md:items-center  overflow-y-auto p-4 pb-24 md:pb-4 md:p-4'>
             <h1 className='font-bold text-sm md:text-base'>Hi, I'm Fin AI Copilot</h1>
             <p className='text-gray-500 text-sm md:text-base'>Ask me anything about this conversation</p>
         </div>

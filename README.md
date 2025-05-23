@@ -1,12 +1,47 @@
-# React + Vite
+Intercom Clone - Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Deployed Link: (https://intercom-clone-zeta.vercel.app/)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern chat application clone inspired by Intercom, featuring user conversations and an AI assistant powered by OpenAI(didn't built due to time-contstraints). Built with React.js and Tailwind CSS.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+🚀 **Core Functionality**
+- Three-panel interface (Users | Chat | AI Assistant)
+- Separate conversation threads for each user
+- Responsive design for all screen sizes
+
+💡 **Key Highlights**
+- User list with avatars & unread indicators
+- Professional UI with efforts to replicate the UI
+- Mobile-optimized input handling
+
+## Tech Stack
+
+🛠️ **Built With**
+- **Frontend**: React.js + Vite
+- **Styling**: Tailwind CSS
+
+
+## Installation
+
+1. Clone repository
+```bash
+git clone https://github.com/Uzrakhan/Intercom-clone.git
+cd Intercom-clone
+
+2. Install Dependencies
+npm install
+
+3. Run Application
+npm run dev
+
+PROJECT STRUCTURE
+src/
+├── components/      # React components
+├── data/            # Dummy data files
+├── hooks/           # Custom hooks
+├── styles/          # CSS files
+└── App.jsx          # Main component
